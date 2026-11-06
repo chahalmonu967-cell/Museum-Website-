@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore a curated collection of historic paintings and museum artwork.">
+  <meta name="theme-color" content="#171c18">
+  <title>Museo Sans — Museum Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://upload.wikimedia.org">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page-shell" id="top">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Museo Sans home">Museo Sans</a>
+
+      <nav class="main-nav" id="main-navigation" aria-label="Main navigation">
+        <a class="nav-link active" href="#collections">Collections</a>
+        <a class="nav-link" href="#mission">Our mission</a>
+        <a class="nav-link" href="#events">Events</a>
+      </nav>
+
+      <a class="contact-link" href="mailto:hello@museosans.example">Contact now</a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="main-navigation" aria-expanded="false">Menu</button>
+    </header>
+
+    <section class="collection-grid" id="collections" aria-label="Featured museum collection">
+      <article class="art-card city-card">
+        <div class="card-content">
+          <span class="eyebrow">Congreve Street</span>
+          <h1>Birmingham <u>Museums.</u></h1>
+          <!-- Original Birmingham Museums Trust artwork image; not a crop of the supplied screenshot. -->
+          <img
+            class="city-image"
+            src="https://images.unsplash.com/photo-1577083862199-97d54558971f?auto=format&amp;fit=crop&amp;w=2200&amp;q=90"
+            alt="Historic watercolor view of Congreve Street in Birmingham, with red-roofed buildings and a church spire"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async">
+        </div>
+        <a class="card-footer" href="#mission"><span>Get started</span><span class="arrow" aria-hidden="true">→</span></a>
+      </article>
+
+      <div class="right-column">
+        <article class="art-card bread-card">
+          <div class="bread-content">
+            <div class="text-block">
+              <span class="eyebrow">Europeana</span>
+              <h2>A Woman Slicing <u>Bread.</u></h2>
+              <p>Date: 1800. Institution: Rijksmuseum. Provider: Rijksmuseum. Providing country: Netherlands. Public domain. Photo by Europeana.</p>
+            </div>
+            <!-- Original public-domain painting by Johannes Christiaan Janson. -->
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Een_vrouw_die_brood_snijdt_Rijksmuseum_SK-C-156.jpeg"
+              alt="A woman slicing bread at a table while a boy stands beside her"
+              loading="lazy"
+              decoding="async">
+          </div>
+          <a class="card-footer" href="#events"><span>Get started</span><span class="arrow" aria-hidden="true">→</span></a>
+        </article>
+
+        <div class="bottom-grid">
+          <article class="art-card portrait-card">
+            <!-- Original public-domain portrait by Frans Hals. -->
+            <img
+              class="portrait-image"
+              src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Portrait_of_Maritge_Claesdr._Voogt_%281577-1644%29_by_Frans_Hals_027.jpg"
+              alt="Portrait of Maritge Claesdr Vooght by Frans Hals, wearing a white ruff collar"
+              loading="lazy"
+              decoding="async">
+            <div class="portrait-heading">
+              <h2>Portrait</h2>
+              <span class="dots" aria-hidden="true">•••</span>
+            </div>
+            <p>Portrait of Maritge Claesdr Vooght. Date: 1639. Institution: Rijksmuseum. Provider: Rijksmuseum. Providing country: Netherlands. Public domain.</p>
+            <a class="card-footer" href="#events"><span>Get started</span><span class="arrow" aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="art-card vintage-card">
+            <div class="vintage-top">
+              <span class="eyebrow">Europeana</span>
+              <!-- Original public-domain Rijksmuseum portrait, displayed as a circular thumbnail. -->
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Portret_van_een_man_Rijksmuseum_SK-C-1553.jpeg"
+                alt="Portrait of a seventeenth-century man wearing a ruff collar"
+                loading="lazy"
+                decoding="async">
+            </div>
+            <h2>Vintage <u>Painting.</u></h2>
+            <p>Portrait of a man. Date: 1648. Institution: Rijksmuseum. Provider: Rijksmuseum. Providing country: Netherlands. Public domain.</p>
+            <div class="metadata"><span>Public domain</span><strong>Netherlands</strong></div>
+            <a class="card-footer" href="#events"><span>Get started</span><span class="arrow" aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mission" id="mission" aria-label="About the collection">
+      <p class="eyebrow">Discover the collection</p>
+      <h2>Stories, preserved through art.</h2>
+      <p>Explore remarkable works, the people behind them, and the moments in history they keep alive.</p>
+    </section>
+
+    <footer id="events">
+      <span>Museo Sans</span>
+      <span>Art connects us across time.</span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </main>
+
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('.main-nav');
+
+    menuButton.addEventListener('click', () => {
+      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isExpanded));
+      navigation.classList.toggle('is-open', !isExpanded);
+      menuButton.textContent = isExpanded ? 'Menu' : 'Close';
+      menuButton.setAttribute('aria-label', isExpanded ? 'Open navigation' : 'Close navigation');
+    });
+
+    navigation.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navigation.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.textContent = 'Menu';
+        menuButton.setAttribute('aria-label', 'Open navigation');
+      });
+    });
+  </script>
+</body>
+</html>

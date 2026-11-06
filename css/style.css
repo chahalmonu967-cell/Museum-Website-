@@ -1,0 +1,271 @@
+:root {
+  --ink: #211b10;
+  --dark: #171c18;
+  --line: #c7b79d;
+  --cream: #e7dcc6;
+  --olive: #999374;
+  --clay: #a9795e;
+  --sand: #c1ad95;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  padding: clamp(12px, 2.6vw, 42px);
+  background: #f4f1e9;
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+}
+button, a { font: inherit; }
+.page-shell {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: clamp(14px, 2.2vw, 34px);
+  background: var(--dark);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+}
+
+/* Header */
+.site-header {
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px;
+  margin-bottom: 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.brand, .nav-link, .contact-link {
+  color: var(--cream);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 25px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+.brand { min-width: 26%; background: #393626; font-weight: 600; }
+.main-nav { display: flex; gap: 6px; }
+.nav-link { min-width: 125px; }
+.nav-link.active { background: var(--cream); color: var(--ink); }
+.contact-link { margin-left: auto; min-width: 145px; }
+.brand:hover, .nav-link:hover, .contact-link:hover {
+  background: var(--cream);
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+.menu-toggle {
+  display: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--cream);
+  background: transparent;
+  min-height: 44px;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+.menu-toggle:hover { background: var(--cream); color: var(--ink); transform: translateY(-2px); }
+
+/* Main desktop composition: tall city card + three artwork cards */
+.collection-grid {
+  display: grid;
+  grid-template-columns: minmax(340px, .9fr) minmax(0, 1.7fr);
+  gap: 12px;
+  align-items: stretch;
+}
+.art-card { overflow: hidden; border-radius: 28px; min-width: 0; }
+.city-card { display: flex; flex-direction: column; background: var(--cream); min-height: 100%; }
+.card-content { padding: clamp(20px, 2.2vw, 34px); flex: 1; }
+.eyebrow {
+  display: inline-block;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-size: clamp(11px, 1vw, 15px);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+h1, h2 { font-family: 'Inter', sans-serif; font-weight: 700; line-height: 1.1; }
+h1 {
+  font-size: clamp(23px, 2vw, 32px);
+  margin: 24px 0 22px;
+  white-space: nowrap;
+}
+h2 { font-size: clamp(22px, 2vw, 34px); margin: 22px 0; }
+.city-image {
+  width: 100%;
+  aspect-ratio: .93 / 1;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 17px;
+  background: #cfc3ad;
+  transition: transform .6s cubic-bezier(.2,.7,.2,1), filter .4s ease;
+}
+.art-card:hover img { filter: saturate(1.08); }
+.city-card:hover .city-image { transform: scale(1.025); }
+.right-column { display: grid; grid-template-rows: minmax(285px, .94fr) minmax(360px, 1.06fr); gap: 12px; min-width: 0; }
+.bread-card { background: var(--olive); display: flex; flex-direction: column; }
+.bread-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, .95fr);
+  gap: 28px;
+  align-items: start;
+  padding: clamp(20px, 2.3vw, 36px);
+  min-height: 0;
+  flex: 1;
+}
+.text-block p, .art-card > p {
+  max-width: 580px;
+  font-size: clamp(11px, .95vw, 14px);
+  line-height: 1.55;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.bread-content img {
+  width: 100%;
+  height: clamp(150px, 15vw, 245px);
+  object-fit: cover;
+  object-position: center;
+  border-radius: 18px;
+  background: #82785f;
+}
+.bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; min-height: 0; }
+.portrait-card { background: var(--clay); padding: 14px; display: flex; flex-direction: column; }
+.portrait-image {
+  width: 100%;
+  height: clamp(145px, 15vw, 220px);
+  object-fit: cover;
+  object-position: center 25%;
+  border-radius: 16px;
+  background: #655b4c;
+}
+.portrait-heading { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.portrait-heading h2 { font-size: clamp(36px, 4vw, 62px); margin: 24px 10px 10px; }
+.dots { font-size: clamp(28px, 3vw, 44px); letter-spacing: -7px; margin-right: 10px; }
+.portrait-card p { padding: 0 14px; margin: 12px 0 24px; }
+.vintage-card { background: var(--sand); padding: clamp(20px, 2.3vw, 34px); display: flex; flex-direction: column; }
+.vintage-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.vintage-top img {
+  width: 74px;
+  height: 74px;
+  object-fit: cover;
+  object-position: center 25%;
+  border-radius: 50%;
+  background: #766952;
+}
+.vintage-card h2 { margin-top: 42px; }
+.vintage-card p { margin-bottom: 30px; }
+.metadata {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  margin-top: auto;
+  border-top: 2px solid var(--ink);
+  border-bottom: 4px double var(--ink);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.card-footer {
+  min-height: 54px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(33,27,16,.22);
+  color: var(--ink);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background .25s ease, padding .25s ease, color .25s ease, transform .25s ease;
+  transform-origin: center;
+}
+.card-footer:hover { background: rgba(255,255,255,.32); padding-left: 30px; transform: scale(1.015); }
+.arrow { font-size: 22px; transition: transform .25s ease; }
+.card-footer:hover .arrow { transform: translateX(6px); }
+
+/* Below the desktop composition the cards follow the tablet/phone reference. */
+@media (max-width: 1050px) {
+  body { padding: 12px; }
+  .page-shell { padding: 14px; border-radius: 22px; }
+  .collection-grid { grid-template-columns: 1fr; }
+  .city-image { aspect-ratio: 3.2 / 1; }
+  .city-card .card-content { padding: 20px 22px; }
+  h1 { margin: 16px 0 18px; font-size: clamp(22px, 3.5vw, 30px); }
+  .right-column { grid-template-rows: auto auto; }
+  .bread-content { min-height: 230px; }
+  .bottom-grid { min-height: 0; }
+  .portrait-image { height: clamp(145px, 22vw, 220px); }
+}
+
+@media (max-width: 700px) {
+  body { padding: 0; }
+  .page-shell { border-radius: 0; border-left: 0; border-right: 0; padding: 10px; }
+  .site-header { border-radius: 20px; justify-content: space-between; padding: 5px; }
+  .brand { min-width: 0; flex: 1; }
+  .main-nav {
+    display: none;
+    position: absolute;
+    z-index: 5;
+    top: 72px;
+    left: 16px;
+    right: 16px;
+    padding: 12px;
+    background: var(--dark);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    flex-direction: column;
+  }
+  .main-nav.is-open { display: flex; }
+  .nav-link { width: 100%; }
+  .contact-link { display: none; }
+  .menu-toggle { display: block; min-width: 70px; }
+  .art-card { border-radius: 20px; }
+  .city-card .card-content { padding: 14px 16px; }
+  h1 { font-size: clamp(19px, 5vw, 24px); margin: 12px 0 12px; }
+  .city-image { aspect-ratio: 3.15 / 1; border-radius: 12px; }
+  .bread-content {
+    grid-template-columns: minmax(0, 1.1fr) minmax(105px, .9fr);
+    gap: 12px;
+    align-items: center;
+    padding: 14px;
+    min-height: 0;
+  }
+  .bread-content h2 { font-size: clamp(16px, 4.2vw, 21px); margin: 12px 0; }
+  .text-block p, .art-card > p { font-size: 9px; line-height: 1.45; }
+  .bread-content img { height: 118px; border-radius: 12px; }
+  .bottom-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .portrait-card { padding: 8px; }
+  .portrait-image { height: 100px; border-radius: 10px; }
+  .portrait-heading { gap: 2px; }
+  .portrait-heading h2 { font-size: clamp(21px, 6vw, 28px); margin: 12px 4px 6px; }
+  .dots { font-size: 17px; letter-spacing: -4px; margin-right: 3px; }
+  .portrait-card p { padding: 0 4px; margin: 5px 0 14px; font-size: 8px; }
+  .vintage-card { padding: 12px; }
+  .vintage-top img { width: 42px; height: 42px; }
+  .vintage-card h2 { font-size: clamp(15px, 4vw, 19px); margin: 22px 0 12px; }
+  .vintage-card p { font-size: 8px; margin-bottom: 16px; }
+  .metadata { font-size: 7px; gap: 4px; padding: 7px 0; }
+  .card-footer { min-height: 36px; padding: 0 10px; font-size: 8px; }
+  .card-footer:hover { padding-left: 13px; }
+  .arrow { font-size: 16px; }
+  .mission { padding: 48px 10px; }
+  .mission h2 { font-size: 32px; }
+  footer { flex-wrap: wrap; font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
